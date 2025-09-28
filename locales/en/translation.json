@@ -1,0 +1,99 @@
+
+{
+  "mainTitle": "Pawn's Gambit",
+  "level": "Level",
+  "pegsRemaining": "Pegs Left",
+  "result": "Result",
+  "controls": {
+    "restart": "Restart",
+    "selectLevel": "Select Level",
+    "stats": "Statistics",
+    "help": "Help"
+  },
+  "gameOver": {
+    "title": "Game Over!",
+    "congratulations": "Congratulations!",
+    "allLevelsCompleted": "You have completed all levels!",
+    "nextLevel": "Next Level",
+    "playAgain": "Play Again"
+  },
+  "levelSelect": {
+    "title": "Select Level"
+  },
+  "helpModal": {
+    "title": "How to Play",
+    "rulesTitle": "Game Rules",
+    "rulesPoint1": "Objective: To leave as few pegs on the board as possible.",
+    "rulesPoint2": "To make a move, click on a peg to select it.",
+    "rulesPoint3": "A selected peg must jump over an adjacent peg into an empty hole immediately on the other side.",
+    "rulesPoint4": "The peg that was jumped over is removed from the board.",
+    "levelUpTitle": "Leveling Up",
+    "levelUpDescription": "To unlock the next level, you must finish the game with 3 or fewer pegs remaining. When you earn a rank of 'Cunning', 'Intelligent', or 'Genius', the next level will become available.",
+    "replayTitle": "Replaying Levels",
+    "replayDescription": "Once you have unlocked a level and earned its specific achievement badge, you can return to play that level again at any time from the 'Select Level' menu."
+  },
+  "sidebar": {
+    "title": "Dashboard",
+    "tabs": {
+      "stats": "Statistics",
+      "achievements": "Achievements"
+    }
+  },
+  "stats": {
+    "title": "Statistics",
+    "won": "Games Won",
+    "avgScore": "Average Score",
+    "highScore": "High Score"
+  },
+  "achievements": {
+    "title": "Achievements",
+    "genius": {
+      "name": "Genius",
+      "description": "Prove your genius by leaving only 1 peg."
+    },
+    "intelligent": {
+      "name": "Intelligent",
+      "description": "Show your intelligence, leave only 2 pegs."
+    },
+    "cunning": {
+      "name": "Cunning",
+      "description": "Use your cunning, leave only 3 pegs."
+    },
+    "successful": {
+      "name": "Successful",
+      "description": "Be successful by finishing with 4 pegs."
+    },
+    "normal": {
+      "name": "Normal",
+      "description": "Get a normal result with 5 pegs."
+    },
+    "inexperienced": {
+      "name": "Inexperienced",
+      "description": "Finished with 6 pegs, you need more practice."
+    },
+    "stupid": {
+      "name": "Stupid",
+      "description": "You left 7 pegs, try again."
+    },
+    "moron": {
+      "name": "Moron",
+      "description": "Finished with 8 pegs, that's not very good."
+    },
+    "brainless": {
+      "name": "Brainless",
+      "description": "Finished with 9 or more pegs."
+    }
+  },
+  "ratings": {
+    "genius": "Genius",
+    "intelligent": "Intelligent",
+    "cunning": "Cunning",
+    "successful": "Successful",
+    "normal": "Normal",
+    "inexperienced": "Inexperienced",
+    "stupid": "Stupid",
+    "moron": "Moron",
+    "brainless": "Brainless"
+  },
+  "ratingWithScore": "{{rating}} ({{score}} Points)"
+}

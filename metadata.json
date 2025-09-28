@@ -1,0 +1,5 @@
+{
+  "name": "Pawn's Gambit",
+  "description": "Pawn's Gambit is a React and TypeScript implementation of the classic Peg Solitaire board game. The goal is to leave only one peg on the board by making valid jumps.",
+  "requestFramePermissions": []
+}
