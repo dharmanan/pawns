@@ -304,16 +304,16 @@ const App: React.FC = () => {
                 moveTo,
                 isEndGame
             });
-            return (
+    return (
         <div className="text-white min-h-screen font-sans p-4">
-             <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} stats={stats} />
-             <LevelSelectModal 
+            <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} stats={stats} />
+            <LevelSelectModal 
                 isOpen={isLevelSelectOpen}
                 onClose={closeLevelSelect}
                 onSelectLevel={handleSelectLevel}
                 highestUnlockedLevel={highestUnlockedLevel}
-             />
-             <HelpModal isOpen={isHelpModalOpen} onClose={closeHelpModal} />
+            />
+            <HelpModal isOpen={isHelpModalOpen} onClose={closeHelpModal} />
             <div className="container mx-auto flex flex-col justify-center items-center">
                 <main className="flex flex-col items-center">
                     <InfoPanel 
@@ -337,8 +337,22 @@ const App: React.FC = () => {
                         onOpenLevelSelect={openLevelSelect}
                         onOpenHelpModal={openHelpModal}
                     />
+                    {/* Sosyal medya butonları: Kontrollerin hemen altında ortalanmış */}
+                    <div className="flex justify-center items-center space-x-6 mt-6 mb-2">
+                        <a href="https://github.com/dharmanan" target="_blank" rel="noopener noreferrer" className="bg-black/60 hover:bg-black/80 rounded-full p-2 shadow-lg transition">
+                            {/* Classic GitHub logo SVG */}
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" className="text-white">
+                                <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.167 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.454-1.154-1.11-1.461-1.11-1.461-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.528 2.341 1.088 2.91.833.091-.646.35-1.088.636-1.34-2.22-.253-4.555-1.112-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.338 1.909-1.294 2.748-1.025 2.748-1.025.546 1.378.202 2.397.099 2.65.64.7 1.028 1.595 1.028 2.688 0 3.847-2.337 4.695-4.565 4.944.359.309.678.919.678 1.852 0 1.336-.012 2.417-.012 2.747 0 .267.18.578.688.48A10.013 10.013 0 0022 12c0-5.523-4.477-10-10-10z" />
+                            </svg>
+                        </a>
+                        <a href="https://twitter.com/KohenEric" target="_blank" rel="noopener noreferrer" className="bg-black/60 hover:bg-black/80 rounded-full p-2 shadow-lg transition">
+                            {/* X (Twitter) logo SVG */}
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" className="text-white">
+                                <path d="M17.53 3H21L14.19 10.59L22.13 21H15.68L10.68 14.19L4.99 21H1.92L9.13 13.01L1.47 3H8.07L12.65 9.23L17.53 3ZM16.36 19H18.19L7.75 5H5.81L16.36 19Z" />
+                            </svg>
+                        </a>
+                    </div>
                 </main>
-                
             </div>
             {gameEnded && (
                 <GameOverModal 
