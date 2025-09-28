@@ -1,0 +1,98 @@
+{
+  "mainTitle": "Pawn's Gambit",
+  "level": "Seviye",
+  "pegsRemaining": "Kalan Taş",
+  "result": "Sonuç",
+  "controls": {
+    "restart": "Yeniden Başlat",
+    "selectLevel": "Seviye Seç",
+    "stats": "İstatistikler",
+    "help": "Yardım"
+  },
+  "gameOver": {
+    "title": "Oyun Bitti!",
+    "congratulations": "Tebrikler!",
+    "allLevelsCompleted": "Tüm seviyeleri tamamladın!",
+    "nextLevel": "Sonraki Seviye",
+    "playAgain": "Yeniden Oyna"
+  },
+  "levelSelect": {
+    "title": "Seviye Seç"
+  },
+  "helpModal": {
+    "title": "Nasıl Oynanır?",
+    "rulesTitle": "Oyun Kuralları",
+    "rulesPoint1": "Amaç: Tahtada mümkün olan en az taşı bırakmak.",
+    "rulesPoint2": "Hamle yapmak için bir taşın üzerine tıklayarak onu seçin.",
+    "rulesPoint3": "Seçili bir taş, bitişiğindeki bir taşın üzerinden atlayarak hemen arkasındaki boş bir deliğe inmelidir.",
+    "rulesPoint4": "Üzerinden atlanan taş tahtadan kaldırılır.",
+    "levelUpTitle": "Seviye Atlama",
+    "levelUpDescription": "Bir sonraki seviyenin kilidini açmak için oyunu en fazla 3 taş bırakarak tamamlamalısın. 'Kurnaz', 'Zeki' veya 'Bilgin' rütbelerinden birini kazandığında, bir sonraki seviye oynanabilir olacaktır.",
+    "replayTitle": "Tekrar Oynama",
+    "replayDescription": "Bir seviyenin kilidini açtıktan ve o seviyeye özel başarı rozetini kazandıktan sonra, 'Seviye Seç' menüsünden istediğin zaman o seviyeye geri dönüp tekrar oynayabilirsin."
+  },
+  "sidebar": {
+    "title": "Panel",
+    "tabs": {
+      "stats": "İstatistikler",
+      "achievements": "Başarılar"
+    }
+  },
+  "stats": {
+    "title": "İstatistikler",
+    "won": "Kazanılan",
+    "avgScore": "Ortalama Puan",
+    "highScore": "En Yüksek Puan"
+  },
+  "achievements": {
+    "title": "Başarılar",
+    "genius": {
+      "name": "Bilgin",
+      "description": "Sadece 1 piyon bırakarak dehanı kanıtla."
+    },
+    "intelligent": {
+      "name": "Zeki",
+      "description": "Sadece 2 piyon bırak, zekanı göster."
+    },
+    "cunning": {
+      "name": "Kurnaz",
+      "description": "Sadece 3 piyon bırak, kurnazlığını konuştur."
+    },
+    "successful": {
+      "name": "Başarılı",
+      "description": "4 piyonla bitirerek başarılı ol."
+    },
+    "normal": {
+      "name": "Normal",
+      "description": "5 piyonla normal bir sonuç elde et."
+    },
+    "inexperienced": {
+      "name": "Tecrübesiz",
+      "description": "6 piyonla bitir, daha çok pratik yapmalısın."
+    },
+    "stupid": {
+      "name": "Aptal",
+      "description": "7 piyon bıraktın, tekrar dene."
+    },
+    "moron": {
+      "name": "Geri Zekalı",
+      "description": "8 piyonla bitirdin, bu pek iyi değil."
+    },
+    "brainless": {
+      "name": "Beyinsiz",
+      "description": "9 veya daha fazla piyonla bitirdin."
+    }
+  },
+  "ratings": {
+    "genius": "Bilgin",
+    "intelligent": "Zeki",
+    "cunning": "Kurnaz",
+    "successful": "Başarılı",
+    "normal": "Normal",
+    "inexperienced": "Tecrübesiz",
+    "stupid": "Aptal",
+    "moron": "Geri Zekalı",
+    "brainless": "Beyinsiz"
+  },
+  "ratingWithScore": "{{rating}} ({{score}} Puan)"
+}
