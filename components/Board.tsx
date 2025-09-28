@@ -16,8 +16,7 @@ interface BoardProps {
 type PegAnimationState = 'idle' | 'selected' | 'jumped' | 'takeoff' | 'landing';
 
 const Peg: React.FC<{ animationState: PegAnimationState }> = ({ animationState }) => {
-    const isSelected = animationState === 'selected';
-    
+    // Görsel ve animasyonlu Peg
     const animationClasses: Record<PegAnimationState, string> = {
         idle: '',
         selected: 'animate-float',
@@ -26,27 +25,54 @@ const Peg: React.FC<{ animationState: PegAnimationState }> = ({ animationState }
         landing: 'animate-land',
     };
 
+    // Şık mermer efekti için Tailwind gradient ve shadow
+    // Seçili taş için farklı bir gradient
+    const isSelected = animationState === 'selected';
     const pegBaseClasses = 'w-full h-full rounded-full transition-all duration-300 relative';
-    
-    // Inspired by user-provided image: Creamy marble with wood-like grain.
-    const normalPegClasses = `
-        bg-[#e0d8c0]
-        bg-[image:radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.8)_0%,rgba(255,255,255,0)_50%),linear-gradient(135deg,rgba(139,69,19,0.3)_0%,rgba(139,69,19,0)_50%),linear-gradient(45deg,rgba(160,82,45,0.35)_30%,rgba(160,82,45,0)_70%),linear-gradient(220deg,rgba(101,67,33,0.25)_20%,rgba(101,67,33,0)_60%)]
-        shadow-[inset_0_3px_5px_rgba(255,255,255,0.6),inset_0_-5px_10px_rgba(50,20,0,0.5),0_5px_15px_rgba(0,0,0,0.3)]
-    `;
-
-    // Inspired by user-provided image: White marble with sharp, shiny gold veins.
-    const selectedPegClasses = `
-        bg-white
-        bg-[image:radial-gradient(circle_at_25%_25%,rgba(255,255,255,0.9)_0%,rgba(255,255,255,0)_45%),linear-gradient(165deg,transparent_45%,rgba(218,165,32,0.7)_48%,rgba(255,215,0,0.6)_50%,rgba(184,134,11,0.7)_52%,transparent_55%),linear-gradient(25deg,transparent_30%,rgba(218,165,32,0.5)_48%,rgba(184,134,11,0.6)_52%,transparent_70%),radial-gradient(ellipse_at_90%_80%,#e0e0e0,#f8f8f8_80%)]
-        shadow-[inset_0_2px_4px_rgba(255,255,255,0.7),inset_0_-4px_8px_rgba(0,0,0,0.3),0_8px_20px_rgba(0,0,0,0.4)]
-    `;
+    const normalPegClasses = 'bg-gradient-to-br from-yellow-200 via-amber-300 to-amber-500 shadow-[inset_0_3px_8px_rgba(255,255,255,0.5),0_5px_15px_rgba(0,0,0,0.3)] border-2 border-amber-700';
+    const selectedPegClasses = 'bg-gradient-to-br from-white via-yellow-200 to-yellow-400 shadow-[inset_0_2px_6px_rgba(255,255,255,0.7),0_8px_20px_rgba(0,0,0,0.4)] border-2 border-yellow-500';
 
     return (
         <div className={`relative w-11/12 h-11/12 ${animationClasses[animationState]}`}>
-            <div className={`${pegBaseClasses} ${isSelected ? selectedPegClasses : normalPegClasses}`}>
-                {/* Visuals are now handled by the parent div's classes */}
-            </div>
+            <svg width="100%" height="100%" viewBox="0 0 100 100">
+                <defs>
+                    <radialGradient id="pegMarble" cx="30%" cy="30%" r="70%">
+                        <stop offset="0%" stopColor={isSelected ? '#fff' : '#f9e7b0'} />
+                        <stop offset="40%" stopColor={isSelected ? '#fffbe6' : '#ffe066'} />
+                        <stop offset="80%" stopColor={isSelected ? '#ffe066' : '#ffd700'} />
+                        <stop offset="100%" stopColor={isSelected ? '#fffbe6' : '#e2b484'} />
+                    </radialGradient>
+                    <radialGradient id="pegSelectedHighlight" cx="50%" cy="50%" r="60%">
+                        <stop offset="0%" stopColor="#fffde4" stopOpacity="1" />
+                        <stop offset="60%" stopColor="#ffe066" stopOpacity="0.7" />
+                        <stop offset="100%" stopColor="#ffd700" stopOpacity="0.3" />
+                    </radialGradient>
+                    <linearGradient id="veinGold" x1="0" y1="0" x2="100" y2="100">
+                        <stop offset="0%" stopColor="#ffe066" stopOpacity="0.8" />
+                        <stop offset="100%" stopColor="#ffd700" stopOpacity="0.3" />
+                    </linearGradient>
+                    <linearGradient id="veinWhite" x1="100" y1="0" x2="0" y2="100">
+                        <stop offset="0%" stopColor="#fff" stopOpacity="0.6" />
+                        <stop offset="100%" stopColor="#fff" stopOpacity="0" />
+                    </linearGradient>
+                </defs>
+                <circle
+                    cx="50" cy="50" r="46"
+                    fill={isSelected ? 'url(#pegSelectedHighlight)' : 'url(#pegMarble)'}
+                    stroke={isSelected ? '#ffd700' : '#bfa77a'}
+                    strokeWidth={isSelected ? '2.5' : '2'}
+                />
+                {/* Mermer damarları: gold ve beyaz */}
+                <path d="M 32 38 Q 50 18 68 38 Q 78 58 58 78" stroke="url(#veinGold)" strokeWidth="2.2" fill="none" opacity="0.8" />
+                <path d="M 42 62 Q 60 52 78 72" stroke="url(#veinWhite)" strokeWidth="1.2" fill="none" opacity="0.7" />
+                <path d="M 62 28 Q 57 55 37 72" stroke="url(#veinGold)" strokeWidth="1.5" fill="none" opacity="0.6" />
+                {/* Parlak highlight sadece içte */}
+                <ellipse
+                    cx="40" cy="38" rx="18" ry="8"
+                    fill="#fff"
+                    opacity={isSelected ? '0.35' : '0.25'}
+                />
+            </svg>
         </div>
     );
 };
@@ -130,7 +156,7 @@ const Board: React.FC<BoardProps> = ({ board, selectedCell, validMoves, jumpedPe
                     if (isSelected) pegAnimationState = 'selected';
                     else if (isTakeoff) pegAnimationState = 'takeoff';
                     else if (isJumped) pegAnimationState = 'jumped';
-                    
+
                     return (
                         <Hole
                             key={`${r}-${c}`}

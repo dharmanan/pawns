@@ -24,6 +24,10 @@ const initialStats: GameStats = {
 const App: React.FC = () => {
     const { t } = useTranslation();
     const [board, setBoard] = useState<BoardState>([]);
+    // DEBUG: Log board state on every render
+    useEffect(() => {
+        console.log('Board state:', board);
+    }, [board]);
     const [selectedCell, setSelectedCell] = useState<Position | null>(null);
     const [gameEnded, setGameEnded] = useState<boolean>(false);
     const [pegCount, setPegCount] = useState<number>(0);
@@ -290,7 +294,17 @@ const App: React.FC = () => {
     const openHelpModal = () => setIsHelpModalOpen(true);
     const closeHelpModal = () => setIsHelpModalOpen(false);
 
-    return (
+            // DEBUG: Log Board props before render
+            console.log('Board props:', {
+                board,
+                selectedCell,
+                validMoves,
+                jumpedPeg,
+                moveFrom,
+                moveTo,
+                isEndGame
+            });
+            return (
         <div className="text-white min-h-screen font-sans p-4">
              <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} stats={stats} />
              <LevelSelectModal 
