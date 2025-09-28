@@ -33,7 +33,7 @@
     "replayDescription": "Bir seviyenin kilidini açtıktan ve o seviyeye özel başarı rozetini kazandıktan sonra, 'Seviye Seç' menüsünden istediğin zaman o seviyeye geri dönüp tekrar oynayabilirsin."
   },
   "sidebar": {
-    "title": "Dashboard",
+  "title": "Panel",
     "tabs": {
       "stats": "İstatistikler",
       "achievements": "Başarılar"
