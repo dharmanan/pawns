@@ -75,7 +75,8 @@ const Peg: React.FC<{ animationState: PegAnimationState }> = ({ animationState }
             </svg>
         </div>
     );
-};
+}
+
 
 const FireAnimation: React.FC = () => (
     <div className="absolute inset-0 flex justify-center items-center pointer-events-none fire-hole-animation">
@@ -120,7 +121,7 @@ const Hole: React.FC<{
 };
 
 const Board: React.FC<BoardProps> = ({ board, selectedCell, validMoves, jumpedPeg, moveFrom, moveTo, onCellClick, isEndGame }) => {
-    // New, realistic wood texture for the board using an inline SVG for the grain.
+    // ...existing code...
     const boardStyle = {
         backgroundImage: `
             linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
@@ -130,48 +131,50 @@ const Board: React.FC<BoardProps> = ({ board, selectedCell, validMoves, jumpedPe
         boxShadow: 'inset 0 0 40px rgba(0,0,0,0.6), 0 10px 30px rgba(0,0,0,0.5)',
         borderWidth: '12px',
         borderStyle: 'solid',
-        borderColor: '#5c3a1a #4a2f16 #4a2f16 #5c3a1a', // Simulates 3D beveling
+        borderColor: '#5c3a1a #4a2f16 #4a2f16 #5c3a1a',
     };
-    
+
     return (
-        <div 
-            style={boardStyle}
-            className="rounded-2xl p-4 sm:p-6 grid grid-cols-7 gap-1 sm:gap-2"
-        >
-            {board.map((row, r) =>
-                row.map((cell, c) => {
-                    if (!cell) {
-                        return <div key={`${r}-${c}`} className="w-12 h-12 sm:w-16 sm:h-16" />;
-                    }
+        <div className="relative flex flex-col items-center">
+            <div 
+                style={boardStyle}
+                className="rounded-2xl p-4 sm:p-6 grid grid-cols-7 gap-1 sm:gap-2"
+            >
+                {board.map((row, r) =>
+                    row.map((cell, c) => {
+                        if (!cell) {
+                            return <div key={`${r}-${c}`} className="w-12 h-12 sm:w-16 sm:h-16" />;
+                        }
 
-                    const isSelected = selectedCell?.row === r && selectedCell?.col === c;
-                    const isValidMove = validMoves.some(m => m.row === r && m.col === c);
-                    const isJumped = jumpedPeg?.row === r && jumpedPeg?.col === c;
-                    const isTakeoff = moveFrom?.row === r && moveFrom?.col === c;
-                    const isLanding = moveTo?.row === r && moveTo?.col === c;
+                        const isSelected = selectedCell?.row === r && selectedCell?.col === c;
+                        const isValidMove = validMoves.some(m => m.row === r && m.col === c);
+                        const isJumped = jumpedPeg?.row === r && jumpedPeg?.col === c;
+                        const isTakeoff = moveFrom?.row === r && moveFrom?.col === c;
+                        const isLanding = moveTo?.row === r && moveTo?.col === c;
 
-                    const hasVisiblePeg = (cell.hasPeg || isJumped || isTakeoff) && !isLanding;
+                        const hasVisiblePeg = (cell.hasPeg || isJumped || isTakeoff) && !isLanding;
 
-                    let pegAnimationState: PegAnimationState = 'idle';
-                    if (isSelected) pegAnimationState = 'selected';
-                    else if (isTakeoff) pegAnimationState = 'takeoff';
-                    else if (isJumped) pegAnimationState = 'jumped';
+                        let pegAnimationState: PegAnimationState = 'idle';
+                        if (isSelected) pegAnimationState = 'selected';
+                        else if (isTakeoff) pegAnimationState = 'takeoff';
+                        else if (isJumped) pegAnimationState = 'jumped';
 
-                    return (
-                        <Hole
-                            key={`${r}-${c}`}
-                            isValidMove={isValidMove && !cell.hasPeg}
-                            onClick={() => onCellClick({ row: r, col: c })}
-                        >
-                           {hasVisiblePeg && <Peg animationState={pegAnimationState} />}
-                           {isLanding && <Peg animationState="landing" />}
-                           {isEndGame && !cell.hasPeg && <FireAnimation />}
-                        </Hole>
-                    );
-                })
-            )}
+                        return (
+                            <Hole
+                                key={`${r}-${c}`}
+                                isValidMove={isValidMove && !cell.hasPeg}
+                                onClick={() => onCellClick({ row: r, col: c })}
+                            >
+                               {hasVisiblePeg && <Peg animationState={pegAnimationState} />}
+                               {isLanding && <Peg animationState="landing" />}
+                               {isEndGame && !cell.hasPeg && <FireAnimation />}
+                            </Hole>
+                        );
+                    })
+                )}
+            </div>
         </div>
     );
-};
+}
 
 export default Board;
