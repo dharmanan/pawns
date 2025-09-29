@@ -11,6 +11,7 @@ interface BoardProps {
     moveTo: Position | null;
     onCellClick: (pos: Position) => void;
     isEndGame: boolean;
+    isBlurred?: boolean;
 }
 
 type PegAnimationState = 'idle' | 'selected' | 'jumped' | 'takeoff' | 'landing';
@@ -120,7 +121,7 @@ const Hole: React.FC<{
     );
 };
 
-const Board: React.FC<BoardProps> = ({ board, selectedCell, validMoves, jumpedPeg, moveFrom, moveTo, onCellClick, isEndGame }) => {
+const Board: React.FC<BoardProps> = ({ board, selectedCell, validMoves, jumpedPeg, moveFrom, moveTo, onCellClick, isEndGame, isBlurred }) => {
     // ...existing code...
     const boardStyle = {
         backgroundImage: `
@@ -138,7 +139,7 @@ const Board: React.FC<BoardProps> = ({ board, selectedCell, validMoves, jumpedPe
         <div className="relative flex flex-col items-center">
             <div 
                 style={boardStyle}
-                className="rounded-2xl p-4 sm:p-6 grid grid-cols-7 gap-1 sm:gap-2"
+                className={`rounded-2xl p-4 sm:p-6 grid grid-cols-7 gap-1 sm:gap-2 ${typeof isBlurred !== 'undefined' && isBlurred ? 'blur-sm pointer-events-none brightness-90' : ''}`}
             >
                 {board.map((row, r) =>
                     row.map((cell, c) => {

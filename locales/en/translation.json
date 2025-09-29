@@ -95,5 +95,6 @@
     "moron": "Moron",
     "brainless": "Brainless"
   },
-  "ratingWithScore": "{{rating}} ({{score}} Points)"
+  "ratingWithScore": "{{rating}} ({{score}} Points)",
+  "start": "Start"
 }
